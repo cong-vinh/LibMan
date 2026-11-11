@@ -1,0 +1,9 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.project.sourcePaths": ["src"],
+  "java.project.outputPath": "build/classes",
+  "java.project.referencedLibraries": [
+    "WebContent/WEB-INF/lib/**/*.jar"
+  ],
+  "files.encoding": "utf8"
+}

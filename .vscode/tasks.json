@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run LibMan",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/run-libman.ps1"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared", "focus": true }
+    }
+  ]
+}

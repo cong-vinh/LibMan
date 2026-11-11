@@ -1,0 +1,5 @@
+build/
+.docx_extract/
+.docx_copy.docx
+.docx_paragraphs.txt
+.media_contact.png

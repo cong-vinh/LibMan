@@ -1,0 +1,37 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="dao.DAO8" %>
+<%!
+private boolean hasReaderAccess(String readerId) {
+    return hasRole("SELECT 1 FROM tblReader8 WHERE readerId = ?", readerId);
+}
+
+private boolean hasManagerAccess(String employeeId) {
+    return hasRole("SELECT 1 FROM tblManager8 WHERE employeeId = ?", employeeId);
+}
+
+private boolean hasRole(String sql, String value) {
+    if (value == null || !value.matches("[0-9]+")) return false;
+    DAO8 dao = new DAO8();
+    try {
+        Connection connection = dao.getConnection();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, Integer.parseInt(value));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                return resultSet.next();
+            }
+        }
+    } catch (RuntimeException e) {
+        return false;
+    } catch (java.sql.SQLException e) {
+        return false;
+    } finally {
+        try {
+            dao.closeConnection();
+        } catch (RuntimeException ignored) {
+            // A failed close must not grant access or break the denial response.
+        }
+    }
+}
+%>
