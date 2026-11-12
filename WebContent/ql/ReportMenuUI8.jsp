@@ -15,7 +15,7 @@
     <p>Các loại báo cáo</p>
     <form action="ReaderStatisticUI8.jsp" method="get">
         <input type="hidden" name="employeeId" value="<%= h(employeeId) %>">
-        <button type="submit" name="chooseStatistics" <%= managerAllowed ? "" : "disabled" %>>Thống kê độc giả</button>
+        <button type="submit" name="chooseStatistics" <%= managerAllowed ? "" : "disabled" %>>Thống kê độc giả theo số lần mượn</button>
     </form>
     <button type="button" onclick="backToMain()">Quay lại</button>
     <% if (!managerAllowed) { %>
